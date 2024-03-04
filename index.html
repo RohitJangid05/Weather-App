@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>Weather Forcast</title>
+</head>
+
+<body>
+    <nav>
+        <input type="checkbox" name="" id="check"><label id="bars" for="check"><i id="bar"  class="hover fa fa-bars"></i></label>
+        <div class="title">
+            <h1>ForecastFox</h1>
+            <ul>
+                <li><a id="home" class="hover" href="index.html">Home</a></li>
+                <li><a id="about" class="hover" href="about.html">About</a></li> 
+              </ul>
+              
+        </div>
+        <div class="search">
+            <input type="text" id="city" placeholder="Search City...">
+            <button id="submit" class="hover" type="submit"><i id=" btn" class="fa fa-search" aria-hidden="true"></i></button>
+        </div>
+    </nav>
+    <div id="loaderHolder">
+        <div id="loader"></div>
+        <main id="main">
+            <span id="main-span"><span class="cityName">Weather of <span id="cityName"></span></span></span>
+            <div class="main-container">
+                <img id="temp" src="./images/cold.png" alt="temperature">
+                <h1>Temp : <span id="Temperature"></span></h1>
+            </div>
+            <div class="sub-container">
+                <div class="card">
+                    <img src="./images/humidity.png" alt="humidity" class="img">
+                    <h2>Feels Like: <span id="Feels_like"></span></h2>
+                    <h2>Humidity: <span id="Humidity"></span></h2>
+                </div>
+                <div class="card">
+                    <img src="./images/min-max.png" alt="min-max temp" class="img">
+                    <h2>Max Temp: <span id="Max_temp"></span></h2>
+                    <h2>Min Temp: <span id="Min_temp"></span></h2>
+                </div>
+                <div class="card">
+                    <img src="./images/sun.png" alt="sunrise" class="img">
+                    <h2>Sunrise: <span id="Sunrise"></span></h2>
+                    <h2>Sunset: <span id="Sunset"></span></h2>
+                </div>
+                <div class="card">
+                    <img src="./images/wind.png" alt="wind" class="img">
+                    <h2>Wind Degree: <span id="Wind_degree"></span></h2>
+                    <h2>Wind Speed: <span id="Wind_speed"></span></h2>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
