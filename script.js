@@ -1,4 +1,4 @@
-import API_KEY from "./config.js";
+const API_KEY = 'your_api_key'; // Replace 'your_api_key' with your actual API key
 
 // Assume result.sunrise and result.sunset are Unix timestamps
 // Function to convert Unix timestamp to HH:MM:SS format
@@ -26,15 +26,14 @@ function convertUnixTimestampToDate(timestamp) {
 }
 
 // Convert Unix timestamps to human-readable formats
-
-
-
 async function getWeather(city) {
-    const url = 'https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=' + city;
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    const apiUrl = 'https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=' + city;
+
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key':API_KEY,
+            'X-RapidAPI-Key': API_KEY,
             'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
         }
     };
@@ -42,20 +41,20 @@ async function getWeather(city) {
     try {
         loader.style.display = 'block';
         main.classList.add('filter')
-        const response = await fetch(url, options);
+        const response = await fetch(proxyUrl + apiUrl, options);
         const result = await response.json();
         loader.style.display = 'none';
         main.classList.remove('filter')
         cityName.innerHTML = city
-        Temperature.innerHTML = result.temp +"°C"
-        Feels_like.innerHTML = result.feels_like +"°C"
-        Humidity.innerHTML = result.humidity +"%"
-        Max_temp.innerHTML = result.max_temp +"°C" 
-        Min_temp.innerHTML = result.min_temp +"°C"
-        Sunrise.innerHTML = convertUnixTimestampToTime(result.sunrise) +" AM"
-        Sunset.innerHTML = convertUnixTimestampToTime(result.sunset) +" PM"
-        Wind_degree.innerHTML = result.wind_degrees +"°"
-        Wind_speed.innerHTML = result.wind_speed +" km/h"
+        Temperature.innerHTML = result.temp + "°C"
+        Feels_like.innerHTML = result.feels_like + "°C"
+        Humidity.innerHTML = result.humidity + "%"
+        Max_temp.innerHTML = result.max_temp + "°C"
+        Min_temp.innerHTML = result.min_temp + "°C"
+        Sunrise.innerHTML = convertUnixTimestampToTime(result.sunrise) + " AM"
+        Sunset.innerHTML = convertUnixTimestampToTime(result.sunset) + " PM"
+        Wind_degree.innerHTML = result.wind_degrees + "°"
+        Wind_speed.innerHTML = result.wind_speed + " km/h"
     } catch (error) {
         console.error(error);
     }
@@ -64,7 +63,7 @@ async function getWeather(city) {
 city.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
         e.preventDefault();
-        getWeather(city.value); 
+        getWeather(city.value);
         city.value = '';
     }
 });
@@ -74,4 +73,5 @@ submit.addEventListener("click", (e) => {
     getWeather(city.value)
     city.value = '';
 })
-getWeather("mumbai")
+
+getWeather("mumbai");
