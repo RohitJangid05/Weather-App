@@ -26,37 +26,54 @@ function convertUnixTimestampToDate(timestamp) {
 
 // Convert Unix timestamps to human-readable formats
 async function getWeather(city) {
-    const url = 'https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city='+city;
+    const url = 'https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=' + city;
 
     const options = {
         method: 'GET',
         headers: {
-          'X-RapidAPI-Key':API_KEY ,
-          'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
+            'X-RapidAPI-Key': API_KEY,
+            'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
         }
-      };
+    };
 
     try {
+       
         loader.style.display = 'block';
-        main.classList.add('filter')
+        main.classList.add('filter');
         const response = await fetch(url, options);
-        const result = await response.json();
-        loader.style.display = 'none';
-        main.classList.remove('filter')
-        cityName.innerHTML = city
-        Temperature.innerHTML = result.temp + "°C"
-        Feels_like.innerHTML = result.feels_like + "°C"
-        Humidity.innerHTML = result.humidity + "%"
-        Max_temp.innerHTML = result.max_temp + "°C"
-        Min_temp.innerHTML = result.min_temp + "°C"
-        Sunrise.innerHTML = convertUnixTimestampToTime(result.sunrise) + " AM"
-        Sunset.innerHTML = convertUnixTimestampToTime(result.sunset) + " PM"
-        Wind_degree.innerHTML = result.wind_degrees + "°"
-        Wind_speed.innerHTML = result.wind_speed + " km/h"
+
+        // Check if response status is not OK
+        if (!response.ok) {
+            throw new Error('City not found');
+
+        } else {
+            const result = await response.json();
+            loader.style.display = 'none';
+            body.style.overflow='scroll'
+            main.classList.remove('filter');
+
+            cityName.innerHTML = city;
+            Temperature.innerHTML = result.temp + "°C";
+            Feels_like.innerHTML = result.feels_like + "°C";
+            Humidity.innerHTML = result.humidity + "%";
+            Max_temp.innerHTML = result.max_temp + "°C";
+            Min_temp.innerHTML = result.min_temp + "°C";
+            Sunrise.innerHTML = convertUnixTimestampToTime(result.sunrise) + " AM";
+            Sunset.innerHTML = convertUnixTimestampToTime(result.sunset) + " PM";
+            Wind_degree.innerHTML = result.wind_degrees + "°";
+            Wind_speed.innerHTML = result.wind_speed + " km/h";
+            errorDiv.style.display='none'
+        }
     } catch (error) {
         console.error(error);
+        if (error.message === 'City not found') {
+            errorDiv.style.display = 'flex'
+            loader.style.display = 'none';
+            body.style.overflow='hidden'
+        }
     }
 }
+
 
 city.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
