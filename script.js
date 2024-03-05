@@ -1,6 +1,5 @@
-const API_KEY = 'your_api_key'; // Replace 'your_api_key' with your actual API key
+import API_KEY from "./config.js";
 
-// Assume result.sunrise and result.sunset are Unix timestamps
 // Function to convert Unix timestamp to HH:MM:SS format
 function convertUnixTimestampToTime(timestamp) {
     // Create a new Date object with the Unix timestamp in milliseconds
@@ -27,21 +26,20 @@ function convertUnixTimestampToDate(timestamp) {
 
 // Convert Unix timestamps to human-readable formats
 async function getWeather(city) {
-    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    const apiUrl = 'https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=' + city;
+    const url = 'https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city='+city;
 
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': API_KEY,
-            'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
+          'X-RapidAPI-Key':API_KEY ,
+          'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
         }
-    };
+      };
 
     try {
         loader.style.display = 'block';
         main.classList.add('filter')
-        const response = await fetch(proxyUrl + apiUrl, options);
+        const response = await fetch(url, options);
         const result = await response.json();
         loader.style.display = 'none';
         main.classList.remove('filter')
