@@ -15,14 +15,21 @@
 
 <body>
     <nav>
-        <input type="checkbox" name="" id="check"><label id="bars" for="check"><i id="bar"
-                class="hover fa fa-bars"></i></label>
-        <div class="title">
-            <h1>ForecastFox</h1>
+        <input type="checkbox" id="checkBox">
+        <label id="bars" for="checkBox"><i class="hover fa fa-bars"></i></label>
+        <div class="heading">
+            <div class="title">
+                <h1>ForecastFox</h1>
+            </div>
             <ul>
-                <li><a id="homeL" class="hover" href="index.html">Home</a></li>
-                <li><a id="about" class="hover" href="about.html">About</a></li> 
-              </ul>
+                <li><a id="home" class="hover" href="index.html">Home</a></li>
+                <li><a id="about" class="hover" href="about.html">About</a></li>
+            </ul>
+        </div>
+        <div class="search">
+            <input id="city" type="text" placeholder="Search City...">
+            <button id="submit" class="hover" type="submit"><i id="searchBtn" class="fa fa-search"
+                    aria-hidden="true"></i></button>
         </div>
     </nav>
     <div class="description">

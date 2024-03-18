@@ -53,7 +53,7 @@ async function getWeather(city) {
             main.classList.remove('filter');
 
             cityName.innerHTML = city;
-            Temperature.innerHTML = result.temp + "°C";
+            Temp.innerHTML = result.temp + "°C";
             Feels_like.innerHTML = result.feels_like + "°C";
             Humidity.innerHTML = result.humidity + "%";
             Max_temp.innerHTML = result.max_temp + "°C";
@@ -62,12 +62,12 @@ async function getWeather(city) {
             Sunset.innerHTML = convertUnixTimestampToTime(result.sunset) + " PM";
             Wind_degree.innerHTML = result.wind_degrees + "°";
             Wind_speed.innerHTML = result.wind_speed + " km/h";
-            errorDiv.style.display='none'
+            message.style.display='none'
         }
     } catch (error) {
         console.error(error);
         if (error.message === 'City not found') {
-            errorDiv.style.display = 'flex'
+            message.style.display = 'block'
             loader.style.display = 'none';
             body.style.overflow='hidden'
         }

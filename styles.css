@@ -3,58 +3,39 @@
     padding: 0;
     font-family: "Comfortaa";
 }
-.hover:hover{
+
+.hover:hover {
     cursor: pointer;
-}
-#check,
-#bars {
-    display: none;
-    z-index: 99;
 }
 
 body {
     width: 100%;
     height: 100%;
-    background: #9d9999;
 }
 
 body::-webkit-scrollbar {
     display: none;
 }
 
-#loaderHolder {
+/* loder and error code  */
+.filter {
+    filter: blur(8px);
+}
+
+#loaderHolder,
+#errorDiv {
     width: 100vw;
     height: 100vh;
-    position: relative;
-}
-#errorDiv{
-    width: 95%;
-    height: 90%;
     display: flex;
-    align-items: center;
     justify-content: center;
-    background:#9d9999;
-    font-size: 45px;
-    font-weight: 900;
-    color: red;
-    position: fixed;
-    left: 50%;
-    bottom: -45%;
-    transform: translate(-50%,-50%);
-}
-#loader {
-    opacity: 1;
+    align-items: center;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 8px solid #f3f3f3;
-    border-top: 8px solid #3498db;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-    font-size: 10px;
+}
+#message{
+    position: relative;
+    top: 7vh;
+    width: 100%;
+    height: 90%;
 }
 
 @keyframes spin {
@@ -67,385 +48,362 @@ body::-webkit-scrollbar {
     }
 }
 
-nav {
-    z-index: 1;
-    height: 10vh;
-    padding: 5px;
-    background: #3e3e3e;
-    color: white;
-    padding: 0px 45px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+#loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    font-size: 10px;
 }
 
-.title {
+#loader,
+#message {
+    z-index: 2;
+    display: none;
+}
+
+#message {
+    font-size: 65px;
+    font-weight: 800;
+    color: red;
+}
+
+
+#checkBox,
+#bars {
+    display: none;
+}
+
+/* nav code   */
+
+nav {
+    z-index: 2;
+    position: fixed;
+    width: 100%;
+    height: 12vh;
+    background: grey;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+}
+
+.heading {
+    display: flex;
     gap: 45px;
 }
 
 .title>h1 {
-    font-size: 35px;
+    margin-left: 15px;
+    font-size: 40px;
     font-weight: 800;
 }
 
 ul {
-    margin-top: 5px;
     display: flex;
-    gap: 20px;
+    align-items: center;
+    gap: 15px;
     list-style: none;
 }
-a{
+
+a {
+    font-size: 25px;
+    font-weight: 800;
     text-decoration: none;
     color: white;
 }
-li {
-    font-size: 25px;
-    font-weight: 800;
-}
-  
-#search::placeholder {
-    font-size: 20px;
+
+.search {
+    margin-right: 35px;
+    display: flex;
+    align-items: center;
 }
 
-#city,
-#submit {
+#city::placeholder {
     font-size: 20px;
-    font-weight: 600;
-    border: 2px solid black;
-    border-radius: 5px;
 }
 
 #city {
+    font-size: 20px;
     padding-left: 5px;
-    width: 20vw;
-    height: 2rem;
+    width: 18vw;
+    height: 4.97vh;
+    border: 2px solid black;
+    border-radius: 10px 0px 0px 10px;
+    outline: none;
 }
 
 #submit {
     width: 4vw;
-    height: 2.2rem;
-    background: rgb(58, 162, 58);
+    height: 5.4vh;
+    background: rgb(82, 188, 82);
+    border: 2px solid black;
+    border-left: none;
+    border-radius: 0px 10px 10px 0px;
+}
+
+#searchBtn {
+    font-size: 18px;
+    font-weight: 800;
     color: white;
 }
 
-.filter {
-    filter: blur(8px);
-}
+/* main block css */
 
-main {
-    margin-top: 15px;
+#main {
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    position: relative;
+    background: #A7C7E7;
+    top: 12vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    gap: 25px;
 }
 
-.cityName,
-#cityName {
+#cityname {
     font-size: 45px;
-    font-weight: 900;
-    text-transform: uppercase;
+    margin-top: 25px;
+    text-transform: capitalize;
 }
 
-.main-container {
-    width: 22%;
-    height: 35vh;
-    padding: 15px;
-    background: #dbd9d9;
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+.mainContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.subContainer,
+.subContainers {
+    padding: 10px;
+    width: 40%;
+    height: 30vh;
+    border-radius: 15px;
+    background: #fffbf1;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.subContainer {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 27%, rgba(251, 196, 78, 0.8991246156665791) 100%);
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
-#temp {
-    width: 280px;
-    height: 180px;
-    mix-blend-mode: multiply;
+#tempImg {
+    width: 150px;
+    height: 150px;
 }
 
-.sub-container {
+.subContainers {
     display: flex;
-    gap: 45px;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .card {
-    width: 20vw;
-    height: 25vh;
-    background: #dbd9d9;
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    width: 19vw;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    text-wrap: nowrap;
 }
 
 .img {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 15px;
-    mix-blend-mode: color-burn;
+    width: 100px;
+    height: 100px;
 }
 
-
-@media only screen and (max-width:1230px) {
-
-    .cityName,
-    #cityName {
-        font-size: 30px;
-        font-weight: 900;
-        text-transform: uppercase;
-    }
-
-    .main-container>h1 {
-        font-size: 25px;
-    }
-
-    h2 {
-        font-size: 15px;
-    }
-
-    #temp {
-        width: 220px;
-        height: 120px;
-        mix-blend-mode: multiply;
-    }
-
+@media only screen and (max-width:1400px) {
     .img {
-        width: 50px;
-        height: 50px;
-        margin-bottom: 15px;
-        mix-blend-mode: color-burn;
-    }
-}
-
-
-
-@media only screen and (max-width:840px) {
-
-    .title>h1 {
-        font-size: 30px;
-        position: relative;
-        right: 70px;
+        width: 80px;
+        height: 80px;
     }
 
-    #check:checked~.title ul {
-        display: flex;
-        flex-direction: column;
-        top: 9vh;
-        transition: top 1.5s;
+    #cityname {
+        font-size: 35px;
     }
 
-    ul {
-        text-align: center;
-        height: 12vh;
-        gap: 12px;
-        padding-left: 8px;
-        width: 20%;
-        background: #3e3e3e;
-        position: absolute;
-        top: -12vh;
-        left: 79%;
-        z-index: -1;
-    }
-
-
-    li {
-        font-size: 20px;
-        padding-top: 5px;
-        padding-left: 12px;
-    }
-
-    #bars {
-        display: block;
-        position: relative;
-        left: 99%;
-        font-size: 30px;
-    }
-
-    .cityName,
-    #cityName {
-        font-size: 25px;
-    }
-
-    .main-container {
-        height: 20vh;
-    }
-
-    .sub-container {
-        gap: 10px;
+    .temp,
+    #Temp {
+        font-size: 23px;
     }
 
     .card {
-        height: 20vh;
-    }
-
-    .search {
-        position: relative;
-        display: flex;
-        gap: 5px;
-        right: 50px;
-    }
-
-    #city {
-        width: 35vw;
-    }
-
-    #submit {
-        width: 7vw;
-    }
-
-    #temp {
-        width: 160px;
-        height: 120px;
-        mix-blend-mode: multiply;
-    }
-
-    .main-container>h1 {
-        font-size: 18px;
-    }
-
-    #main-container {
-        height: 150px;
-    }
-
-    h2 {
-        font-size: 9px;
-    }
-
-    .img {
-        width: 30px;
-        height: 30px;
-        margin-bottom: 15px;
-        mix-blend-mode: color-burn;
-    }
-}
-
-@media only screen and (max-width:499px) {
-
-    .title>h1 {
-        font-size: 20px;
-        position: relative;
-        right: 65px;
-    }
-
-    #check:checked~.title ul {
-        display: flex;
-        flex-direction: column;
-        top: 8vh;
-        transition: top 1.5s;
-    }
-
-    ul {
-        text-align: center;
-        height: 10vh;
-        gap: 8px;
-        padding-left: 8px;
-        width: 20%;
-        background: #3e3e3e;
-        position: absolute;
-        top: -12vh;
-        left: 82%;
-        z-index: -1;
-    }
-
-    li {
         font-size: 12px;
-        padding-top: 5px;
-        padding-left: 6px;
+        gap: 12px;
     }
-#bar{
-    font-size: 20px;
-    margin-bottom: 5px;
 }
-    #bars {
-        display: block;
-        position: relative;
-        left: 97%;
+
+@media only screen and (max-width:1000px) {
+    #message {
+        font-size: 50px;
+    }
+
+    .heading {
+        gap: 12px;
+    }
+
+    .title>h1 {
         font-size: 30px;
     }
-    .cityName,
-    #cityName {
+
+    ul {
+        gap: 7px;
+    }
+
+    a {
         font-size: 15px;
-    }
-    #main{
-        gap: 20px;
-    }
-
-    .main-container {
-        height: 20vh;
-    }
-
-    .sub-container {
-        gap: 10px;
-        display: grid;
-        grid-template-columns: auto auto ;
-        grid-row: auto auto;
-    }
-
-    nav {
-        width: 84vw;
-    }
-
-    .card {
-        width: 140px;
-        height: 20vh;
-    }
-
-    .search {
-        position: relative;
-        display: flex;
-        gap: 5px;
-        right: 50px;
-    }
-
-    #city {
-        width: 35vw;
-        height: 1.5rem;
     }
 
     #city::placeholder {
-        font-size: 14px;
+        font-size: 15px;
     }
 
-    #submit {
-        width: 7vw;
-        height: 1.7rem;
+    #city {
+        width: 23vw;
+        font-size: 18px;
     }
 
-    #btn {
-      
-        font-size: 16px;
+    .search {
+        margin-right: 12px;
     }
 
-    #temp {
-        width: 160px;
-        height: 120px;
-        mix-blend-mode: multiply;
-    }
-
-    .main-container>h1 {
-        font-size: 20px;
-    }
-
-    .main-container {
-        width: 250px;
-        height: 120px;
-    }
-
-    h2 {
+    #searchBtn {
         font-size: 12px;
     }
 
     .img {
-        width: 30px;
-        height: 30px;
-        margin-bottom: 15px;
-        mix-blend-mode: color-burn;
+        width: 60px;
+        height: 60px;
+    }
+
+    #cityname {
+        font-size: 28px;
+    }
+
+    .temp,
+    #Temp {
+        font-size: 20px;
+    }
+
+    .card {
+        font-size: 10px;
+        gap: 12px;
+        text-wrap: wrap;
+    }
+}
+
+@media only screen and (max-width:750px) {
+    .heading{
+        display: flex;
+        align-items: center;
+    }
+    .title>h1 {
+        position: relative;
+        right: 30px;
+    }
+
+    .search {
+        position: fixed;
+        right: 15%;
+    }
+    #bars {
+        display: block;
+        position: relative;
+        left: 90%;
+        color: white;
+        font-size: 25px;
+    }
+    #checkBox:not(checked)~.heading ul {
+        position: fixed;
+        left: 100%;
+        transition: left 1.5s;
+    }
+    #checkBox:checked~.heading ul {
+        position: fixed;
+        left: 80%;
+        transition: left 1.2s;
+    }
+    .heading{
+        width: 100vw;
+    }
+    ul {
+        flex-direction: column;
+        position: relative;
+        width: 25%;
+        height: 100vh;
+        background:rgb(80, 79, 79);
+        top: 12vh;
+        left: 100%;
+        gap: 15px;
+    }
+    ul li{
+        margin-top: 25px;
+    }
+    #city {
+        width: 35vw;
+    }
+
+    #message {
+        font-size: 40px;
+    }
+
+    #main {
+        height: 100%;
+        padding-bottom: 25px;
+    }
+
+    .temp,
+    #Temp {
+        font-size: 24px;
+    }
+
+    .mainContainer {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .subContainer,
+    .subContainers {
+        width: 85%;
+    }
+
+    .card {
+        width: 50%;
+        font-size: 12px;
+    }
+}
+@media only screen and (max-width:470px){
+    .title>h1{
+        font-size: 22px;
+    }
+    .search{
+        right: 42px;
+    }
+    #city {
+        height: 4.5vh;
+    }
+    #submit {
+        width: 8vw;
+        height: 5.1vh;
+    }
+    #bars{
+        font-size: 20px;
+    }
+ 
+    .temp,#Temp{
+        font-size: 20px;
+    }
+    #cityname{
+        font-size: 25px;
+    }
+    .card{
+        font-size: 9px;
     }
 }
