@@ -11,6 +11,8 @@
 
 .description>h1 {
     margin-top: 25px;
+    color:darkslateblue;
+    font-weight: 800;
 }
 
 dt{
@@ -23,16 +25,6 @@ dd{
     font-size: 20px;
 }
 
-footer {
-    position: relative;
-    top: 12vh;
-    font-size: 20px;
-    height: 8vh;
-    background: grey;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 @media only screen and (max-width:750px) {
     .description>h1 {
         font-size: 26px;
@@ -51,13 +43,13 @@ footer {
     .description>h1 {
         font-size: 22px;
     }  
+    .description{
+        top: 8vh;
+    }
     dt{
         font-size: 18px;
     }
     dd{
-        font-size: 12px;
-    }
-    footer{
         font-size: 12px;
     }
 }
