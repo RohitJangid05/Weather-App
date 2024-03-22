@@ -16,7 +16,6 @@ function convertUnixTimestampToTime(timestamp) {
     return hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2) + ' ' + meridiem;
 }
 
-
 // Function to convert Unix timestamp to a date string
 function convertUnixTimestampToDate(timestamp) {
     // Create a new Date object with the Unix timestamp in milliseconds
@@ -41,11 +40,10 @@ async function getWeather(city) {
     };
 
     try {
-       
+
         loader.style.display = 'block';
         main.classList.add('filter');
         const response = await fetch(url, options);
-
         // Check if response status is not OK
         if (!response.ok) {
             throw new Error('City not found');
@@ -53,7 +51,7 @@ async function getWeather(city) {
         } else {
             const result = await response.json();
             loader.style.display = 'none';
-            body.style.overflow='scroll'
+            body.style.overflow = 'scroll'
             main.classList.remove('filter');
 
             cityName.innerHTML = city;
@@ -62,18 +60,18 @@ async function getWeather(city) {
             Humidity.innerHTML = result.humidity + "%";
             Max_temp.innerHTML = result.max_temp + "°C";
             Min_temp.innerHTML = result.min_temp + "°C";
-            Sunrise.innerHTML = convertUnixTimestampToTime(result.sunrise) ;
-            Sunset.innerHTML = convertUnixTimestampToTime(result.sunset) ;
+            Sunrise.innerHTML = convertUnixTimestampToTime(result.sunrise);
+            Sunset.innerHTML = convertUnixTimestampToTime(result.sunset);
             Wind_degree.innerHTML = result.wind_degrees + "°";
             Wind_speed.innerHTML = result.wind_speed + " km/h";
-            message.style.display='none'
+            message.style.display = 'none'
         }
     } catch (error) {
         console.error(error);
         if (error.message === 'City not found') {
             message.style.display = 'block'
             loader.style.display = 'none';
-            body.style.overflow='hidden'
+            body.style.overflow = 'hidden'
         }
     }
 }

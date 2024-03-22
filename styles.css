@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: "Comfortaa";
 }
 
@@ -86,6 +87,7 @@ body::-webkit-scrollbar {
 /* nav code   */
 
 nav {
+    padding: 0px 25px 0px 25px;
     z-index: 2;
     position: fixed;
     width: 100%;
@@ -102,7 +104,6 @@ nav {
 }
 
 .title>h1 {
-    margin-left: 15px;
     font-size: 40px;
     font-weight: 800;
 }
@@ -123,7 +124,6 @@ a {
 }
 
 .search {
-    margin-right: 35px;
     display: flex;
     align-items: center;
 }
@@ -136,7 +136,7 @@ a {
     font-size: 20px;
     padding-left: 5px;
     width: 18vw;
-    height: 4.97vh;
+    height: 5vh;
     border: 2px solid black;
     border-radius: 10px 0px 0px 10px;
     outline: none;
@@ -144,7 +144,7 @@ a {
 
 #submit {
     width: 4vw;
-    height: 5.4vh;
+    height: 5vh;
     background: rgb(82, 188, 82);
     border: 2px solid black;
     border-left: none;
@@ -206,15 +206,18 @@ a {
     width: 150px;
     height: 150px;
 }
-.info{
+
+.info {
     display: grid;
     grid-template-rows: auto auto;
     grid-template-columns: auto auto;
-    gap: 10px; 
+    gap: 10px;
 }
-h2{
+
+h2 {
     display: inline-block;
 }
+
 .subContainers {
     display: flex;
     justify-content: space-evenly;
@@ -327,25 +330,24 @@ footer {
 }
 
 @media only screen and (max-width:800px) {
+    nav {
+        padding: 0px 15px 0px 15px;
+    }
+    #city{
+        font-size: 12px;
+    }
+    #city::placeholder {
+        font-size: 12px;
+    }
     .heading {
         display: flex;
         align-items: center;
     }
 
-    .title>h1 {
-        position: relative;
-        right: 30px;
-    }
-
-    .search {
-        position: fixed;
-        right: 12%;
-    }
-
     #bars {
         display: block;
         position: relative;
-        left: 90%;
+        left: 95%;
         color: white;
         font-size: 25px;
     }
@@ -364,6 +366,11 @@ footer {
 
     .heading {
         width: 100vw;
+    }
+
+    .search {
+        position: relative;
+        right: 5%;
     }
 
     ul {
@@ -387,10 +394,11 @@ footer {
 
     #submit {
         width: 5vw;
-        height: 5.5vh;
+        height: 5vh;
     }
+
     ul li {
-        padding-right: 20px;
+        padding-right: 45px;
     }
 
     #main {
@@ -420,36 +428,39 @@ footer {
     }
 }
 
-@media only screen and (max-width:470px) {
+@media only screen and (max-width:500px) {
+    nav {
+        height: 8vh;
+        padding: 0px 5px 0px 5px;
+    }
+
     .title>h1 {
         font-size: 22px;
     }
 
-    nav {
-        padding-left: 5px;
-        height: 8vh;
-    }
-
     #main {
-        height: 100vh;
+        height: 100%;
         top: 8vh;
+        box-sizing: none;
+        padding-bottom: 85px;
     }
 
     .search {
-        right: 35px;
+        right: 10%;
     }
 
     #city {
-        height: 3.5vh;
+        width: 30vw;
+        height: 4vh;
     }
 
     #submit {
-        width: 8vw;
-        height: 3.9vh;
+        width: 7vw;
+        height: 4vh;
     }
 
     #bars {
-        font-size: 26px;
+        font-size: 22px;
         left: 90%;
     }
 
@@ -463,10 +474,17 @@ footer {
 
     .subContainer,
     .subContainers {
-        height: 20vh;
+        height: 25vh;
     }
-    .subContainer{
-        padding-bottom: 25px;
+
+    #tempImg {
+        width: 120px;
+        height: 120px;
+    }
+
+    .img {
+        width: 50px;
+        height: 50px;
     }
 
     .temp,
@@ -479,12 +497,12 @@ footer {
     }
 
     .card {
-        font-size: 9px;
+        font-size: 8px;
     }
 
     footer {
         position: relative;
-        top: 3vh;
+        top: 7vh;
         font-size: 16px;
         height: 5vh;
     }
